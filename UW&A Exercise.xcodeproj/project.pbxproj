@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		E323219724B9D0E300FCBD3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323219624B9D0E300FCBD3C /* AppDelegate.swift */; };
-		E323219924B9D0E300FCBD3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323219824B9D0E300FCBD3C /* SceneDelegate.swift */; };
 		E323219B24B9D0E300FCBD3C /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323219A24B9D0E300FCBD3C /* MasterViewController.swift */; };
-		E323219D24B9D0E300FCBD3C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323219C24B9D0E300FCBD3C /* DetailViewController.swift */; };
+		E323219D24B9D0E300FCBD3C /* AddTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323219C24B9D0E300FCBD3C /* AddTeamViewController.swift */; };
 		E32321A024B9D0E300FCBD3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E323219E24B9D0E300FCBD3C /* Main.storyboard */; };
 		E32321A224B9D0F300FCBD3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32321A124B9D0F300FCBD3C /* Assets.xcassets */; };
 		E32321A524B9D0F300FCBD3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32321A324B9D0F300FCBD3C /* LaunchScreen.storyboard */; };
 		E32321B024B9D0F400FCBD3C /* UW_A_ExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321AF24B9D0F400FCBD3C /* UW_A_ExerciseTests.swift */; };
+		E32321BB24B9D16200FCBD3C /* UWADataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321BA24B9D16200FCBD3C /* UWADataModel.swift */; };
+		E32321BC24B9D16200FCBD3C /* UWADataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321BA24B9D16200FCBD3C /* UWADataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,9 +31,8 @@
 /* Begin PBXFileReference section */
 		E323219324B9D0E300FCBD3C /* UW&A Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UW&A Exercise.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E323219624B9D0E300FCBD3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E323219824B9D0E300FCBD3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E323219A24B9D0E300FCBD3C /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		E323219C24B9D0E300FCBD3C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E323219C24B9D0E300FCBD3C /* AddTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamViewController.swift; sourceTree = "<group>"; };
 		E323219F24B9D0E300FCBD3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E32321A124B9D0F300FCBD3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E32321A424B9D0F300FCBD3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +40,7 @@
 		E32321AB24B9D0F400FCBD3C /* UW&A ExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UW&A ExerciseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32321AF24B9D0F400FCBD3C /* UW_A_ExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_A_ExerciseTests.swift; sourceTree = "<group>"; };
 		E32321B124B9D0F400FCBD3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E32321BA24B9D16200FCBD3C /* UWADataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UWADataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				E323219624B9D0E300FCBD3C /* AppDelegate.swift */,
-				E323219824B9D0E300FCBD3C /* SceneDelegate.swift */,
 				E323219A24B9D0E300FCBD3C /* MasterViewController.swift */,
-				E323219C24B9D0E300FCBD3C /* DetailViewController.swift */,
+				E323219C24B9D0E300FCBD3C /* AddTeamViewController.swift */,
+				E32321BA24B9D16200FCBD3C /* UWADataModel.swift */,
 				E323219E24B9D0E300FCBD3C /* Main.storyboard */,
 				E32321A124B9D0F300FCBD3C /* Assets.xcassets */,
 				E32321A324B9D0F300FCBD3C /* LaunchScreen.storyboard */,
@@ -204,9 +205,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E323219724B9D0E300FCBD3C /* AppDelegate.swift in Sources */,
-				E323219924B9D0E300FCBD3C /* SceneDelegate.swift in Sources */,
 				E323219B24B9D0E300FCBD3C /* MasterViewController.swift in Sources */,
-				E323219D24B9D0E300FCBD3C /* DetailViewController.swift in Sources */,
+				E32321BB24B9D16200FCBD3C /* UWADataModel.swift in Sources */,
+				E323219D24B9D0E300FCBD3C /* AddTeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32321B024B9D0F400FCBD3C /* UW_A_ExerciseTests.swift in Sources */,
+				E32321BC24B9D16200FCBD3C /* UWADataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +371,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77JSUXUCB2;
 				INFOPLIST_FILE = "UW&A Exercise/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +390,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77JSUXUCB2;
 				INFOPLIST_FILE = "UW&A Exercise/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
