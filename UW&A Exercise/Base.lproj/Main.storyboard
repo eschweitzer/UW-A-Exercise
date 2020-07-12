@@ -111,6 +111,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="u6E-67-kPY"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="U8x-IS-OpZ">
+                            <rect key="frame" x="0.0" y="102.5" width="414" height="149"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <viewLayoutGuide key="safeArea" id="egS-y1-iAO"/>
+                            <string key="text">No teams entered. Touch the "+" button above to add a team. When ready, touch the schedule button. You have to enter three teams before you can create a schedule.</string>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TeamCell" id="WCw-Qf-5nD" customClass="UWATeamTableViewCell" customModule="UW_A_Exercise" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="46.5"/>
@@ -148,12 +157,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
                     <connections>
+                        <outlet property="noTeamsLabel" destination="U8x-IS-OpZ" id="RDj-5t-bWO"/>
                         <segue destination="g0c-7b-02H" kind="showDetail" identifier="schedule" id="1av-2l-bYf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="-630"/>
+            <point key="canvasLocation" x="708.69565217391312" y="-630.13392857142856"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="xIw-5X-Ch2">

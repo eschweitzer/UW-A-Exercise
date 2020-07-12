@@ -48,6 +48,21 @@ class AddTeamViewController: UIViewController, UITextFieldDelegate, UIPickerView
         configureView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let splitController = navigationController?.splitViewController {
+            let controllers = splitController.viewControllers
+            if let masterViewController = (controllers.first as? UINavigationController)?.viewControllers.first as? MasterViewController {
+                delegate = masterViewController
+            }
+            if !splitController.isCollapsed {
+                navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         saveTeam(nil)
     }

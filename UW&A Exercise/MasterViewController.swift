@@ -15,6 +15,7 @@ protocol UWAMaster : MasterViewController {
 
 class MasterViewController: UITableViewController, UWAMaster {
 
+    @IBOutlet weak var noTeamsLabel: UILabel!
     var sortedTeams: [[UWATeam]]?
     var teams = [UWATeam]()
 
@@ -24,14 +25,6 @@ class MasterViewController: UITableViewController, UWAMaster {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         let scheduleButton = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(createSchedule(_:)))
         navigationItem.rightBarButtonItems = [addButton, scheduleButton]
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            if let controller = (controllers[controllers.count-1] as? UINavigationController)?.topViewController as? AddTeamViewController {
-                controller.delegate = self
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +32,7 @@ class MasterViewController: UITableViewController, UWAMaster {
         super.viewWillAppear(animated)
         teams = [UWATeam]()
         sortedTeams = teams.createSortedTeams()
+        enableNoTeamLabel()
         enableScheduleButton()
     }
 
@@ -67,6 +61,11 @@ class MasterViewController: UITableViewController, UWAMaster {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        enableNoTeamLabel()
+    }
+    
+    private func enableNoTeamLabel() {
+        noTeamsLabel.isHidden = (teams.count > 0)
     }
     
     private func enableScheduleButton() {
@@ -95,9 +94,6 @@ class MasterViewController: UITableViewController, UWAMaster {
                             controller.teamItem = team
                         }
                     }
-                    controller.delegate = self
-                    controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                    controller.navigationItem.leftItemsSupplementBackButton = true
                 }
             }
         }
@@ -147,9 +143,14 @@ class MasterViewController: UITableViewController, UWAMaster {
                 }
                 teams.remove(at: indexOfTeam)
                 teams.save()
+                enableNoTeamLabel()
                 sortedTeams = teams.createSortedTeams()
             }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if teams.count > 0 {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                tableView.reloadData()
+            }
         }
     }
     
