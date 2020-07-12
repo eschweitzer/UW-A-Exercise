@@ -16,6 +16,16 @@
 		E32321B024B9D0F400FCBD3C /* UW_A_ExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321AF24B9D0F400FCBD3C /* UW_A_ExerciseTests.swift */; };
 		E32321BB24B9D16200FCBD3C /* UWADataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321BA24B9D16200FCBD3C /* UWADataModel.swift */; };
 		E32321BC24B9D16200FCBD3C /* UWADataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321BA24B9D16200FCBD3C /* UWADataModel.swift */; };
+		E32321BE24BA166600FCBD3C /* Pool Names.plist in Resources */ = {isa = PBXBuildFile; fileRef = E32321BD24BA166600FCBD3C /* Pool Names.plist */; };
+		E32321BF24BA166600FCBD3C /* Pool Names.plist in Resources */ = {isa = PBXBuildFile; fileRef = E32321BD24BA166600FCBD3C /* Pool Names.plist */; };
+		E32321C124BA3C5B00FCBD3C /* UWATeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321C024BA3C5A00FCBD3C /* UWATeamTableViewCell.swift */; };
+		E32321C224BA3C5B00FCBD3C /* UWATeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321C024BA3C5A00FCBD3C /* UWATeamTableViewCell.swift */; };
+		E32321C424BA702A00FCBD3C /* UWAScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321C324BA702A00FCBD3C /* UWAScheduleTableViewController.swift */; };
+		E32321C524BA702A00FCBD3C /* UWAScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321C324BA702A00FCBD3C /* UWAScheduleTableViewController.swift */; };
+		E32321C724BA745900FCBD3C /* UWAGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321C624BA745900FCBD3C /* UWAGameTableViewCell.swift */; };
+		E32321C824BA745900FCBD3C /* UWAGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321C624BA745900FCBD3C /* UWAGameTableViewCell.swift */; };
+		E3E6900C24BAA85F002061BF /* UWAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6900B24BAA85F002061BF /* UWAViewModel.swift */; };
+		E3E6900D24BAA85F002061BF /* UWAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6900B24BAA85F002061BF /* UWAViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +51,11 @@
 		E32321AF24B9D0F400FCBD3C /* UW_A_ExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UW_A_ExerciseTests.swift; sourceTree = "<group>"; };
 		E32321B124B9D0F400FCBD3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32321BA24B9D16200FCBD3C /* UWADataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UWADataModel.swift; sourceTree = "<group>"; };
+		E32321BD24BA166600FCBD3C /* Pool Names.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pool Names.plist"; sourceTree = "<group>"; };
+		E32321C024BA3C5A00FCBD3C /* UWATeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWATeamTableViewCell.swift; sourceTree = "<group>"; };
+		E32321C324BA702A00FCBD3C /* UWAScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAScheduleTableViewController.swift; sourceTree = "<group>"; };
+		E32321C624BA745900FCBD3C /* UWAGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAGameTableViewCell.swift; sourceTree = "<group>"; };
+		E3E6900B24BAA85F002061BF /* UWAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +99,14 @@
 			children = (
 				E323219624B9D0E300FCBD3C /* AppDelegate.swift */,
 				E323219A24B9D0E300FCBD3C /* MasterViewController.swift */,
+				E32321C024BA3C5A00FCBD3C /* UWATeamTableViewCell.swift */,
 				E323219C24B9D0E300FCBD3C /* AddTeamViewController.swift */,
+				E32321C324BA702A00FCBD3C /* UWAScheduleTableViewController.swift */,
+				E32321C624BA745900FCBD3C /* UWAGameTableViewCell.swift */,
+				E3E6900B24BAA85F002061BF /* UWAViewModel.swift */,
 				E32321BA24B9D16200FCBD3C /* UWADataModel.swift */,
 				E323219E24B9D0E300FCBD3C /* Main.storyboard */,
+				E32321BD24BA166600FCBD3C /* Pool Names.plist */,
 				E32321A124B9D0F300FCBD3C /* Assets.xcassets */,
 				E32321A324B9D0F300FCBD3C /* LaunchScreen.storyboard */,
 				E32321A624B9D0F300FCBD3C /* Info.plist */,
@@ -184,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32321BE24BA166600FCBD3C /* Pool Names.plist in Resources */,
 				E32321A524B9D0F300FCBD3C /* LaunchScreen.storyboard in Resources */,
 				E32321A224B9D0F300FCBD3C /* Assets.xcassets in Resources */,
 				E32321A024B9D0E300FCBD3C /* Main.storyboard in Resources */,
@@ -194,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32321BF24BA166600FCBD3C /* Pool Names.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +230,10 @@
 				E323219B24B9D0E300FCBD3C /* MasterViewController.swift in Sources */,
 				E32321BB24B9D16200FCBD3C /* UWADataModel.swift in Sources */,
 				E323219D24B9D0E300FCBD3C /* AddTeamViewController.swift in Sources */,
+				E32321C424BA702A00FCBD3C /* UWAScheduleTableViewController.swift in Sources */,
+				E32321C724BA745900FCBD3C /* UWAGameTableViewCell.swift in Sources */,
+				E3E6900C24BAA85F002061BF /* UWAViewModel.swift in Sources */,
+				E32321C124BA3C5B00FCBD3C /* UWATeamTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32321C824BA745900FCBD3C /* UWAGameTableViewCell.swift in Sources */,
+				E32321C524BA702A00FCBD3C /* UWAScheduleTableViewController.swift in Sources */,
+				E3E6900D24BAA85F002061BF /* UWAViewModel.swift in Sources */,
 				E32321B024B9D0F400FCBD3C /* UW_A_ExerciseTests.swift in Sources */,
+				E32321C224BA3C5B00FCBD3C /* UWATeamTableViewCell.swift in Sources */,
 				E32321BC24B9D16200FCBD3C /* UWADataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,7 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77JSUXUCB2;
+				DEVELOPMENT_TEAM = LW3P9HEWCV;
 				INFOPLIST_FILE = "UW&A Exercise/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -388,7 +418,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 77JSUXUCB2;
+				DEVELOPMENT_TEAM = LW3P9HEWCV;
 				INFOPLIST_FILE = "UW&A Exercise/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

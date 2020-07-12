@@ -8,48 +8,97 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+protocol UWAMaster : MasterViewController {
+    func addTeam(_ team: UWATeam)
+    var teams: [UWATeam] { get }
+}
 
-    var detailViewController: AddTeamViewController? = nil
-    var objects = [Any]()
+class MasterViewController: UITableViewController, UWAMaster {
 
+    var sortedTeams: [[UWATeam]]?
+    var teams = [UWATeam]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        navigationItem.leftBarButtonItem = editButtonItem
-
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
+        let scheduleButton = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(createSchedule(_:)))
+        navigationItem.rightBarButtonItems = [addButton, scheduleButton]
         if let split = splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? AddTeamViewController
+            if let controller = (controllers[controllers.count-1] as? UINavigationController)?.topViewController as? AddTeamViewController {
+                controller.delegate = self
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        teams = [UWATeam]()
+        sortedTeams = teams.createSortedTeams()
+        enableScheduleButton()
     }
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        performSegue(withIdentifier: "addTeam", sender: self)
+    }
+    
+    @objc
+    func createSchedule(_ sender: Any) {
+        performSegue(withIdentifier: "schedule", sender: self)
+    }
+    
+    func addTeam(_ team: UWATeam) {
+        if team.name.count == 0 {
+            return
+        }
+        if !teams.doesTeamExist(team.name) {
+            teams.append(team)
+            teams.save()
+            enableScheduleButton()
+            sortedTeams = teams.createSortedTeams()
+            tableView.reloadData()
+        } else {
+            let alert = UIAlertController(title: "Duplicate Team", message: "That team name has already been used. Duplicate team not saved. Please try again.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func enableScheduleButton() {
+        let rightBarButtonItems = navigationItem.rightBarButtonItems
+        if let scheduleButton = rightBarButtonItems?[1] {
+            scheduleButton.isEnabled = teams.count > 2
+        }
     }
 
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTeam" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
-                let controller = (segue.destination as! UINavigationController).topViewController as! AddTeamViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
-                detailViewController = controller
+            if let controller = (segue.destination as? UINavigationController)?.topViewController as? AddTeamViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    if let team = sortedTeams?[indexPath.section][indexPath.row] {
+                        var indexOfTeam = NSNotFound
+                        for (idx, aTeam) in teams.enumerated() {
+                            if (aTeam.name == team.name) {
+                                indexOfTeam = idx
+                                break;
+                            }
+                        }
+                        if indexOfTeam < teams.count {
+                            teams.remove(at: indexOfTeam)
+                            controller.teamItem = team
+                        }
+                    }
+                    controller.delegate = self
+                    controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                    controller.navigationItem.leftItemsSupplementBackButton = true
+                }
             }
         }
     }
@@ -57,34 +106,65 @@ class MasterViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if let number = sortedTeams?.count {
+            return number
+        }
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        if let number = sortedTeams?[section].count {
+            return number
+        }
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let poolName = sortedTeams?[section].first?.pool {
+            return poolName
+        }
+        return ""
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as? UWATeamTableViewCell,
+            let team = sortedTeams?[indexPath.section][indexPath.row] {
+            cell.teamItem = team
+            return cell
+        }
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            if let team = sortedTeams?[indexPath.section][indexPath.row] {
+                var indexOfTeam = 0
+                for (idx, aTeam) in teams.enumerated() {
+                    if (aTeam.name == team.name) {
+                        indexOfTeam = idx
+                        break;
+                    }
+                }
+                teams.remove(at: indexOfTeam)
+                teams.save()
+                sortedTeams = teams.createSortedTeams()
+            }
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
-
+    
 }
 
+extension MasterViewController: UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        
+        guard let navigationController = secondaryViewController as? UINavigationController,
+            let detailViewController = navigationController.topViewController as? AddTeamViewController else {
+                // Fallback to the default
+                return false
+        }
+        
+        return detailViewController.teamItem == nil
+    }
+}
