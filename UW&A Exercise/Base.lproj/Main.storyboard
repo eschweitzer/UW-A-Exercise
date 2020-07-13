@@ -61,6 +61,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Yxc-jb-SNh" firstAttribute="top" secondItem="c1L-yc-f3d" secondAttribute="bottom" id="522-wg-0hq"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="osp-iT-Ga2" secondAttribute="trailing" constant="20" id="DxA-SR-4j5"/>
@@ -76,17 +77,102 @@
                             <constraint firstItem="zr1-Y3-TMY" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="20" id="vfk-3i-wTt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="sbR-QD-65Y"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4px-PZ-ouT" appends="YES" id="tvJ-7O-Ex8"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Team" id="mOI-FS-AaM">
+                        <barButtonItem key="rightBarButtonItem" title="Edit Pools" id="Cg5-im-lsg">
+                            <connections>
+                                <segue destination="jxw-c1-toc" kind="show" id="EsS-bm-Bo2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="poolPicker" destination="Yxc-jb-SNh" id="Ung-ut-jjZ"/>
+                        <outlet property="tapRecognizer" destination="4px-PZ-ouT" id="RBr-ha-geI"/>
                         <outlet property="textField" destination="osp-iT-Ga2" id="eyL-0Z-GhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4px-PZ-ouT">
+                    <connections>
+                        <action selector="didTap:" destination="JEX-9P-axG" id="Ulf-V8-zxm"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="708.69565217391312" y="128.57142857142856"/>
+        </scene>
+        <!--Pool Table View Controller-->
+        <scene sceneID="Stj-hC-NCo">
+            <objects>
+                <tableViewController id="jxw-c1-toc" customClass="UWAPoolTableViewController" customModule="UW_A_Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="crp-Xz-YE3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PoolName" textLabel="ouJ-69-zDq" style="IBUITableViewCellStyleDefault" id="1Ye-XP-0WN">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Ye-XP-0WN" id="s6C-QA-nHe">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ouJ-69-zDq">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PoolNameEntry" id="NoH-EL-3lc" customClass="UWAEnterPoolTableViewCell" customModule="UW_A_Exercise" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.5" width="414" height="44.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NoH-EL-3lc" id="w1H-r2-ulH">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-HV-9C9">
+                                            <rect key="frame" x="20" y="5" width="374" height="34.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="jxw-c1-toc" id="6ZD-fw-Mub"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="l7C-HV-9C9" firstAttribute="top" secondItem="w1H-r2-ulH" secondAttribute="top" constant="5" id="37l-wZ-oR2"/>
+                                        <constraint firstAttribute="bottom" secondItem="l7C-HV-9C9" secondAttribute="bottom" constant="5" id="EcC-hI-Qnl"/>
+                                        <constraint firstAttribute="trailing" secondItem="l7C-HV-9C9" secondAttribute="trailing" constant="20" id="c4B-nD-TT3"/>
+                                        <constraint firstItem="l7C-HV-9C9" firstAttribute="leading" secondItem="w1H-r2-ulH" secondAttribute="leading" constant="20" id="zLQ-15-PKY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="l7C-HV-9C9" id="6GK-Vr-qYZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jxw-c1-toc" id="X90-Yc-Ov4"/>
+                            <outlet property="delegate" destination="jxw-c1-toc" id="ryS-dM-7qu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="GsX-kK-2Iu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qP-ZG-xzv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1473.913043478261" y="128.57142857142856"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">

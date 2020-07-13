@@ -13,6 +13,7 @@ class AddTeamViewController: UIViewController, UITextFieldDelegate, UIPickerView
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var poolPicker: UIPickerView!
+    @IBOutlet weak var tapRecognizer: UITapGestureRecognizer!
     var poolNames: [String]?
     weak var delegate: UWAMaster?
 
@@ -31,12 +32,6 @@ class AddTeamViewController: UIViewController, UITextFieldDelegate, UIPickerView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let path = Bundle.main.path(forResource: "Pool Names", ofType: "plist") else {return}
-        let url = URL(fileURLWithPath: path)
-        let data = try! Data(contentsOf: url)
-        guard let poolNamesFromPlist = try! PropertyListSerialization.propertyList(from: data, options: .mutableContainers, format: nil) as? [String] else {return}
-        poolNames = poolNamesFromPlist
         
         if let splitController = navigationController?.splitViewController {
             if !splitController.isCollapsed {
@@ -51,6 +46,10 @@ class AddTeamViewController: UIViewController, UITextFieldDelegate, UIPickerView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        poolNames = PoolStorage.getPools()
+        poolPicker.reloadComponent(0)
+        configureView()
+
         if let splitController = navigationController?.splitViewController {
             let controllers = splitController.viewControllers
             if let masterViewController = (controllers.first as? UINavigationController)?.viewControllers.first as? MasterViewController {
@@ -78,6 +77,10 @@ class AddTeamViewController: UIViewController, UITextFieldDelegate, UIPickerView
         didSet {
             configureView()
         }
+    }
+    
+    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
+        textField.resignFirstResponder()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -119,6 +122,7 @@ class AddTeamViewController: UIViewController, UITextFieldDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textField.resignFirstResponder()
         guard let newPoolName = poolNames?[row] else { return }
         if let team = teamItem {
             team.pool = newPoolName

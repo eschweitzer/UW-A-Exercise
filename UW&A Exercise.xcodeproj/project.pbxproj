@@ -26,6 +26,10 @@
 		E32321C824BA745900FCBD3C /* UWAGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32321C624BA745900FCBD3C /* UWAGameTableViewCell.swift */; };
 		E3E6900C24BAA85F002061BF /* UWAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6900B24BAA85F002061BF /* UWAViewModel.swift */; };
 		E3E6900D24BAA85F002061BF /* UWAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6900B24BAA85F002061BF /* UWAViewModel.swift */; };
+		E3E6900F24BBC77C002061BF /* UWAPoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6900E24BBC77C002061BF /* UWAPoolTableViewController.swift */; };
+		E3E6901024BBC77C002061BF /* UWAPoolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6900E24BBC77C002061BF /* UWAPoolTableViewController.swift */; };
+		E3E6901224BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6901124BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift */; };
+		E3E6901324BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6901124BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,8 @@
 		E32321C324BA702A00FCBD3C /* UWAScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAScheduleTableViewController.swift; sourceTree = "<group>"; };
 		E32321C624BA745900FCBD3C /* UWAGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAGameTableViewCell.swift; sourceTree = "<group>"; };
 		E3E6900B24BAA85F002061BF /* UWAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAViewModel.swift; sourceTree = "<group>"; };
+		E3E6900E24BBC77C002061BF /* UWAPoolTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAPoolTableViewController.swift; sourceTree = "<group>"; };
+		E3E6901124BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UWAEnterPoolTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,8 @@
 				E323219C24B9D0E300FCBD3C /* AddTeamViewController.swift */,
 				E32321C324BA702A00FCBD3C /* UWAScheduleTableViewController.swift */,
 				E32321C624BA745900FCBD3C /* UWAGameTableViewCell.swift */,
+				E3E6900E24BBC77C002061BF /* UWAPoolTableViewController.swift */,
+				E3E6901124BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift */,
 				E3E6900B24BAA85F002061BF /* UWAViewModel.swift */,
 				E32321BA24B9D16200FCBD3C /* UWADataModel.swift */,
 				E323219E24B9D0E300FCBD3C /* Main.storyboard */,
@@ -226,12 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3E6901224BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift in Sources */,
 				E323219724B9D0E300FCBD3C /* AppDelegate.swift in Sources */,
 				E323219B24B9D0E300FCBD3C /* MasterViewController.swift in Sources */,
 				E32321BB24B9D16200FCBD3C /* UWADataModel.swift in Sources */,
 				E323219D24B9D0E300FCBD3C /* AddTeamViewController.swift in Sources */,
 				E32321C424BA702A00FCBD3C /* UWAScheduleTableViewController.swift in Sources */,
 				E32321C724BA745900FCBD3C /* UWAGameTableViewCell.swift in Sources */,
+				E3E6900F24BBC77C002061BF /* UWAPoolTableViewController.swift in Sources */,
 				E3E6900C24BAA85F002061BF /* UWAViewModel.swift in Sources */,
 				E32321C124BA3C5B00FCBD3C /* UWATeamTableViewCell.swift in Sources */,
 			);
@@ -243,6 +253,8 @@
 			files = (
 				E32321C824BA745900FCBD3C /* UWAGameTableViewCell.swift in Sources */,
 				E32321C524BA702A00FCBD3C /* UWAScheduleTableViewController.swift in Sources */,
+				E3E6901324BBD9AE002061BF /* UWAEnterPoolTableViewCell.swift in Sources */,
+				E3E6901024BBC77C002061BF /* UWAPoolTableViewController.swift in Sources */,
 				E3E6900D24BAA85F002061BF /* UWAViewModel.swift in Sources */,
 				E32321B024B9D0F400FCBD3C /* UW_A_ExerciseTests.swift in Sources */,
 				E32321C224BA3C5B00FCBD3C /* UWATeamTableViewCell.swift in Sources */,

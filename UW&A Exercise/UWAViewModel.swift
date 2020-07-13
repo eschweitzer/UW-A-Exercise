@@ -8,16 +8,65 @@
 
 import UIKit
 
-
-extension Array where Element : UWATeam {
+struct DocumentsDirectory {
     
-    static func getDocumentsDirectory() -> URL? {
+    fileprivate static func getDocumentsDirectory() -> URL? {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths.first
     }
+}
+
+struct PoolStorage {
     
-    static func getFileURL() -> URL? {
-        if let documentsDir = self.getDocumentsDirectory() {
+    private static func getFileURL() -> URL? {
+        if let documentsDir = DocumentsDirectory.getDocumentsDirectory() {
+            return documentsDir.appendingPathComponent("pools.json")
+        }
+        return nil
+    }
+    
+    static func defaultPools() -> [String] {
+        guard let path = Bundle.main.path(forResource: "Pool Names", ofType: "plist") else {return []}
+        let url = URL(fileURLWithPath: path)
+        let data = try! Data(contentsOf: url)
+        guard let poolNamesFromPlist = try! PropertyListSerialization.propertyList(from: data, options: .mutableContainers, format: nil) as? [String] else {return []}
+        return poolNamesFromPlist
+    }
+    
+    static func getPools() -> [String] {
+        do {
+            let decoder = JSONDecoder()
+            if let fileURL = PoolStorage.getFileURL() {
+                let data = try Data(contentsOf: fileURL)
+                if data.count == 0 {
+                    return defaultPools()
+                }
+                return try decoder.decode([String].self, from: data)
+            } else {
+                return defaultPools()
+            }
+        } catch {
+            return defaultPools()
+        }
+    }
+    
+    static func savePools(_ pools: [String]) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(pools)
+            if let fileURL = PoolStorage.getFileURL() {
+                try data.write(to: fileURL)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+extension Array where Element : UWATeam {
+    
+    private static func getFileURL() -> URL? {
+        if let documentsDir = DocumentsDirectory.getDocumentsDirectory() {
             return documentsDir.appendingPathComponent("teams.json")
         }
         return nil
