@@ -193,7 +193,19 @@ extension Array where Element : UWATeam {
     }
     
     /**
-     return An array with each element being an array of games on the day
+     Reads the array of teams and schedules games between the teams.
+     
+      Games are scheduled between teams using the following rules:
+     
+      Each team has a game with every team in the same pool.
+     
+      Each team has one additional game with a team from another random pool. All teams in a pool face random opponents from the same pool.
+     
+      There are three game slots on even days (Saturday) and 2 slots on even odd days (Sunday).
+     
+      A team can only play a game in one slot each day.
+     
+     - Returns: An array with each element being an array of games on the day. Even indices (0, 2, 4, ...) are Saturdays and will have no more than three games. Odd indicies (1, 3, 5, ...) are Sundays and will have no more than two games.
      */
     func createSchedule() -> [[UWAGame]] {
         var schedule: [[UWAGame]] = []
